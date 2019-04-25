@@ -146,27 +146,28 @@
       "Type": "String",
       "Description": "config files (.tar.gz)",
       "Default": "https://github.com/benishak/lamp-aws-cloudformation/raw/master/example/mybb_1812/mybb.tar.gz",
+      "Default": "https://github.com/REI-Systems/demo-codewithme-cloudformation/raw/master/example/mybb_1812/mybb.tar.gz",
       "ConstraintDescription": "Must be a valid url!"
     },
 
     "MySQLDump": {
       "Type": "String",
       "Description": "MySQL dump file (mybb.sql)",
-      "Default": "https://raw.githubusercontent.com/benishak/lamp-aws-cloudformation/master/example/mybb_1812/mybb.sql",
+      "Default": "https://raw.githubusercontent.com/REI-Systems/demo-codewithme-cloudformation/master/example/mybb_1812/mybb.sql",
       "ConstraintDescription": "Must be a valid url!"
     },
 
     "BeforeInstall": {
       "Type": "String",
       "Description": "Before install script",
-      "Default": "https://raw.githubusercontent.com/benishak/lamp-aws-cloudformation/master/example/mybb_1812/beforeinstall.sh",
+      "Default": "https://raw.githubusercontent.com/REI-Systems/demo-codewithme-cloudformation/master/example/mybb_1812/beforeinstall.sh",
       "ConstraintDescription": "Must be a valid url!"
     },
 
     "AfterInstall": {
       "Type": "String",
       "Description": "After install script",
-      "Default": "https://raw.githubusercontent.com/benishak/lamp-aws-cloudformation/master/example/mybb_1812/afterinstall.sh",
+      "Default": "https://raw.githubusercontent.com/REI-Systems/demo-codewithme-cloudformation/master/example/mybb_1812/afterinstall.sh",
       "ConstraintDescription": "Must be a valid url!"
     },
 
@@ -254,9 +255,9 @@
     },
 
     "RDSDeletionPolicy": {
-      "Description" : "What happens after deleting the stack? Snapshot is recommended",
+      "Description" : "What happens after deleting the stack? Snapshot is recommended.  Delete used to speed development",
       "Type" : "String",
-      "Default" : "Snapshot",
+      "Default" : "Delete",
       "AllowedValues" : [ "Delete", "Retain", "Snapshot" ]
     },
 
@@ -716,7 +717,7 @@
         "MasterUsername": { "Ref": "DBUser" },
         "MasterUserPassword": { "Ref" : "DBPassword" },
         "Engine" : "MySQL",
-        "MultiAZ" : "true",
+        "MultiAZ" : "false",
         "VPCSecurityGroups" : [ { "Fn::GetAtt": [ "DBEC2SecurityGroup", "GroupId" ] } ]
       },
       "DeletionPolicy": "Snapshot",
