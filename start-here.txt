@@ -1,21 +1,19 @@
-Create an S3 bucket.
+Simple way to launch CF template (limited to 51Kb file)
 
-1) Create an S3 bucket for the CF template.
+1)  Edit the command below, replacing "your-key-here" with your SSH keyname stored in AWS
+2)  Create the CF stack by running the command
+
+aws cloudformation create-stack --stack-name demo-lamp-stack --template-body file://./lamp.cf --parameters ParameterKey="KeyName",ParameterValue="your-key-here" ParameterKey="DBPassword",ParameterValue="password" ParameterKey="DBUser",ParameterValue="root" ParameterKey="DBRootPassword",ParameterValue="password"
+
+More Scalable way to launch CF template (up to 460Kb file)
+1) Create an S3 bucket for the CF template. (Replace "myname" with your name, as all S3 buckets must have globally unique name.)
 	aws s3 mb s3://myname-cf-demo
 
-2) Push the CF template to the S3 bucket.
-	aws s3 cp lamp.cf.template.json s3://myname-cf-demo
+2) Push the CF template to the S3 bucket. Again update S3 bucket name.
+	aws s3 cp lamp.cf s3://myname-cf-demo
 
-3) Create the CF stack.
-	aws cloudformation create-stack --stack-name my-cf-demo --template-body s3://myname-cf-demo/lamp.cf.template.json
+3) Edit the command below, replacing "your-key-here" with your SSH keyname stored in AWS, and replacing "myname-cf-demo" with the name of your S3 bucket.
 
-aws cloudformation create-stack --stack-name myteststack --template-body file:///Users/miams/Repositories/REISystems-iac-demos/terraform/test1/lamp-aws-cloudformation/lamp.cf.template.json
+        aws cloudformation create-stack --stack-name myteststack2 --template-url=https://s3.amazonaws.com/myname-cf-demo/lamp.cf  --parameters ParameterKey="KeyName",ParameterValue="miams" ParameterKey="DBPassword",ParameterValue="password" ParameterKey="DBUser",ParameterValue="root" ParameterKey="DBRootPassword",ParameterValue="password"
 
-PROMPT> aws cloudformation create-stack --stack-name myteststack --template-body file:///home/testuser/mytemplate.json --parameters ParameterKey=Parm1,ParameterValue=test1 ParameterKey=Parm2,ParameterValue=test2
-{
-  "StackId" : "arn:aws:cloudformation:us-west-2:123456789012:stack/myteststack/330b0120-1771-11e4-af37-50ba1b98bea6"
-}
 
-s3://myname-cf-demo/lamp.cf.template.json
-
-https://s3.amazonaws.com/myname-cf-demo/lamp.cf.template.json
