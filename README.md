@@ -26,7 +26,7 @@ Highly availabile and scalable secure architecture includes
 
 Read more in the example/mybb_1812/Design.pdf
 
-[<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png">](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=lamp-stack&templateURL=https://raw.githubusercontent.com/benishak/lamp-aws-cloudformation/master/lamp.cf.template.json)
+[<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png">](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=lamp-stack&templateURL=https://raw.githubusercontent.com/REI-Systems/demo-codewithme-cloudformation/master/lamp.cf.template.json)
 
 
 ## Parameters
@@ -111,6 +111,3 @@ sed -i -e 's/BB_URL/'"$X_ELB_HOSTNAME"'/g' /var/www/html/inc/settings.php
 - MyBB example/mybb_1812
 
 feel free to contribute and share your examples with beforeinstall & afterinstall scripts!
-
-
-
