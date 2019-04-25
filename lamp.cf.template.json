@@ -187,7 +187,8 @@
     "LoginPassword": {
       "NoEcho": "true",
       "Type": "String",
-      "Description": "Optional password for admin login, if any"
+      "Description": "Optional password for admin login, if any",
+      "Default": "password"
     },
 
     "DBName": {
@@ -215,7 +216,8 @@
       "Type": "String",
       "Description" : "MySQL Password (Minimum 8)",
       "MinLength": "8",
-      "ConstraintDescription" : "The given password is too short!"
+      "ConstraintDescription" : "The given password is too short!",
+      "Default": "password123"
     },
 
     "DBStorage": {
